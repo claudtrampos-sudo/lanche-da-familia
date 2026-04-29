@@ -789,7 +789,7 @@
     lines.push('\n*Total: R$ ' + total.toFixed(2).replace('.', ',') + '*');
     lines.push('\nAguardo confirma\u00e7\u00e3o e informa\u00e7\u00f5es de entrega!');
     var msg = encodeURIComponent(lines.join('\n'));
-    window.open('https://wa.me/5592991323663' + msg, '_blank');
+    window.open('https://wa.me/5592991323663?text=' + msg, '_blank');
   }
 </script>
 </body>
