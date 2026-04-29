@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lanche Da Família — O Sabor Que Junta Todo Mundo</title>
+<meta name="description" content="Sanduíches, salgados, bolos, pudim, churrasco e muito mais. Peça já pelo WhatsApp!">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0d0604;
+    --bg-elevated: #160a07;
+    --red: #d62828;
+    --red-deep: #8b1a1a;
+    --red-glow: #ff3d3d;
+    --yellow: #ffc83d;
+    --yellow-soft: #f9d56e;
+    --cream: #fff4dc;
+    --text: #f5e8d2;
+    --muted: #b8a48a;
+    --whatsapp: #25d366;
+    --whatsapp-dark: #128c7e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Textura de grão sutil em toda a página */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    padding: 80px 0 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(214, 40, 40, 0.25), transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(255, 200, 61, 0.12), transparent 50%),
+      linear-gradient(180deg, #1a0908 0%, #0d0604 100%);
+    overflow: hidden;
+  }
+
+  /* Listras decorativas estilo "barraca de feira" */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--red) 0 24px,
+      var(--yellow) 24px 48px
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 200, 61, 0.12);
+    border: 1px solid rgba(255, 200, 61, 0.4);
+    color: var(--yellow);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .badge::before {
+    content: '🔥';
+    font-size: 1rem;
+  }
+
+  h1.hero-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(2.6rem, 8vw, 5.8rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.9s ease 0.1s both;
+  }
+
+  h1.hero-title .line-1 {
+    display: block;
+    color: var(--cream);
+  }
+  h1.hero-title .line-2 {
+    display: block;
+    color: var(--yellow);
+    text-shadow: 4px 4px 0 var(--red-deep);
+  }
+  h1.hero-title .line-3 {
+    display: block;
+    color: var(--cream);
+    font-style: italic;
+    font-size: 0.65em;
+  }
+  h1.hero-title .line-3 em {
+    color: var(--red-glow);
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    color: var(--muted);
+    max-width: 580px;
+    margin-bottom: 36px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .hero-sub strong { color: var(--cream); font-weight: 700; }
+
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .price-tag {
+    display: flex;
+    flex-direction: column;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .price-tag strong {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--yellow);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  /* Botão WhatsApp principal */
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--whatsapp);
+    color: #fff;
+    padding: 18px 32px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35), inset 0 -3px 0 rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(37, 211, 102, 0.5), inset 0 -3px 0 rgba(0,0,0,0.2);
+  }
+
+  .btn-whatsapp svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+  .btn-whatsapp::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+    transform: translateX(-100%);
+    animation: shine 3s ease-in-out infinite;
+  }
+
+  @keyframes shine {
+    0%, 60% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Hambúrguer ilustrativo em SVG no hero */
+  .hero-visual {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-8deg);
+    width: 480px;
+    height: 480px;
+    z-index: 2;
+    opacity: 0.85;
+    pointer-events: none;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(-50%) rotate(-8deg); }
+    50% { transform: translateY(calc(-50% - 12px)) rotate(-6deg); }
+  }
+
+  /* ===== SECTION GERAL ===== */
+  section { padding: 90px 0; position: relative; }
+
+  .section-eyebrow {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--yellow);
+    letter-spacing: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 56px;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+  }
+  .section-title em {
+    font-style: normal;
+    color: var(--red-glow);
+    text-decoration: underline wavy var(--yellow);
+    text-underline-offset: 8px;
+  }
+
+  /* ===== CARDÁPIO ===== */
+  .menu {
+    background: linear-gradient(180deg, var(--bg) 0%, #1a0908 100%);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+
+  .menu-card {
+    background: var(--bg-elevated);
+    border: 1px solid rgba(255, 200, 61, 0.15);
+    border-radius: 18px;
+    padding: 28px 22px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(214,40,40,0.15), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--yellow);
+    background: #1f0d09;
+  }
+  .menu-card:hover::before { opacity: 1; }
+
+  .menu-icon {
+    font-size: 2.6rem;
+    margin-bottom: 14px;
+    display: block;
+    filter: drop-shadow(0 4px 12px rgba(214,40,40,0.4));
+  }
+
+  .menu-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--yellow);
+    font-size: 1.4rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+
+  .menu-card p {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  /* ===== BENEFÍCIOS ===== */
+  .benefits {
+    background: var(--bg);
+    position: relative;
+  }
+
+  .benefits::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--red) 0 16px,
+      var(--yellow) 16px 32px
+    );
+  }
+
+  .benefits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    list-style: none;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 26px;
+    background: linear-gradient(135deg, rgba(214,40,40,0.08), rgba(255,200,61,0.04));
+    border-left: 4px solid var(--red);
+    border-radius: 0 16px 16px 0;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .benefit-item:hover {
+    transform: translateX(6px);
+    border-left-color: var(--yellow);
+  }
+
+  .benefit-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.4rem;
+    color: var(--yellow);
+    line-height: 1;
+    flex-shrink: 0;
+    text-shadow: 2px 2px 0 var(--red-deep);
+  }
+
+  .benefit-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--cream);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .benefit-text p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  /* ===== DEPOIMENTOS ===== */
+  .testimonials {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(214,40,40,0.18), transparent 60%),
+      var(--bg-elevated);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 24px;
+  }
+
+  .testimonial {
+    background: var(--bg);
+    border: 1px solid rgba(255, 200, 61, 0.2);
+    border-radius: 18px;
+    padding: 32px 28px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .testimonial:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(214,40,40,0.2);
+  }
+
+  .testimonial::before {
+    content: '"';
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 5rem;
+    color: var(--yellow);
+    line-height: 1;
+    opacity: 0.9;
+  }
+
+  .stars {
+    color: var(--yellow);
+    font-size: 1.15rem;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+  }
+
+  .testimonial-text {
+    color: var(--text);
+    font-size: 1rem;
+    margin-bottom: 22px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--red), var(--yellow));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo Black', sans-serif;
+    color: #fff;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    border: 2px solid var(--bg-elevated);
+  }
+
+  .author-info strong {
+    display: block;
+    color: var(--cream);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .author-info span {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  /* ===== CTA FINAL ===== */
+  .cta-final {
+    background:
+      linear-gradient(135deg, var(--red-deep) 0%, #4a0d0d 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 100px 0;
+  }
+
+  .cta-final::before,
+  .cta-final::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+  }
+  .cta-final::before {
+    width: 300px; height: 300px;
+    background: var(--yellow);
+    top: -100px; left: -100px;
+  }
+  .cta-final::after {
+    width: 350px; height: 350px;
+    background: var(--red-glow);
+    bottom: -120px; right: -100px;
+  }
+
+  .cta-final .container { position: relative; z-index: 2; }
+
+  .urgency-banner {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--bg);
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 26px;
+    box-shadow: 0 6px 20px rgba(255,200,61,0.4);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  .cta-final h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--cream);
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .cta-final h2 em { color: var(--yellow); font-style: normal; }
+
+  .cta-final p {
+    color: var(--cream);
+    font-size: 1.15rem;
+    margin-bottom: 36px;
+    opacity: 0.92;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-whatsapp.btn-large {
+    font-size: 1.2rem;
+    padding: 22px 44px;
+    border-radius: 16px;
+  }
+  .btn-whatsapp.btn-large svg { width: 26px; height: 26px; }
+
+  .urgency-note {
+    margin-top: 22px;
+    color: var(--yellow-soft);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #050302;
+    padding: 50px 0 40px;
+    border-top: 4px solid var(--yellow);
+    text-align: center;
+  }
+
+  footer .brand {
+    font-family: 'Archivo Black', sans-serif;
+    color: var(--yellow);
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  footer .brand span { color: var(--red-glow); }
+
+  footer .tagline {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+  }
+
+  .social {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-elevated);
+    color: var(--cream);
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid rgba(255,200,61,0.25);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .social:hover {
+    background: var(--yellow);
+    color: var(--bg);
+    border-color: var(--yellow);
+  }
+
+  .social svg { width: 20px; height: 20px; }
+
+  .copyright {
+    margin-top: 28px;
+    color: #5d4d3d;
+    font-size: 0.8rem;
+  }
+
+  /* Botão flutuante de WhatsApp */
+  .float-whatsapp {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background: var(--whatsapp);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 28px rgba(37,211,102,0.5);
+    z-index: 100;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .float-whatsapp:hover { transform: scale(1.1); }
+  .float-whatsapp svg { width: 30px; height: 30px; color: #fff; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== RESPONSIVO ===== */
+  @media (max-width: 768px) {
+    .hero { padding: 60px 0 40px; min-height: auto; }
+    .hero-visual { display: none; }
+    section { padding: 70px 0; }
+    .hero-cta-row { flex-direction: column; align-items: stretch; }
+    .price-tag { text-align: center; }
+    .btn-whatsapp { justify-content: center; width: 100%; }
+    .benefit-item { padding: 22px; }
+    .benefit-num { font-size: 2rem; }
+    .testimonial { padding: 28px 22px; }
+    .float-whatsapp { width: 56px; height: 56px; bottom: 18px; right: 18px; }
+    h1.hero-title .line-2 { text-shadow: 3px 3px 0 var(--red-deep); }
+  }
+
+  @media (max-width: 420px) {
+    .container { padding: 0 18px; }
+    .menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .menu-card { padding: 22px 14px; }
+    .menu-icon { font-size: 2.2rem; }
+    .menu-card h3 { font-size: 1.15rem; }
+    .menu-card p { font-size: 0.82rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-content">
+    <span class="badge">Aberto · Pedidos pelo WhatsApp</span>
+    <h1 class="hero-title">
+      <span class="line-1">O sabor que</span>
+      <span class="line-2">junta a</span>
+      <span class="line-3">família <em>na mesa</em></span>
+    </h1>
+    <p class="hero-sub">
+      <strong>Sanduíches suculentos, salgados crocantes, bolos caseiros, pudim cremoso, churrasco no capricho</strong> — e aquela bebida gelada pra acompanhar. Tudo feito com carinho, do nosso forno direto pra sua casa.
+    </p>
+    <div class="hero-cta-row">
+      <div class="price-tag">
+        A partir de
+        <strong>R$ 9,90</strong>
+      </div>
+      <a href="https://wa.me/5592991323663?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20no%20Lanche%20da%20Fam%C3%ADlia" class="btn-whatsapp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Peça Agora — É Rapidinho!
+      </a>
+    </div>
+  </div>
+
+  <!-- Hambúrguer ilustrativo -->
+  <svg class="hero-visual" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="bunTop" cx="50%" cy="40%">
+        <stop offset="0%" stop-color="#f5b455"/>
+        <stop offset="100%" stop-color="#a86a1a"/>
+      </radialGradient>
+      <linearGradient id="meat" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#6b2e1c"/>
+        <stop offset="100%" stop-color="#3d1810"/>
+      </linearGradient>
+      <linearGradient id="cheese" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#ffd84d"/>
+        <stop offset="100%" stop-color="#e8a830"/>
+      </linearGradient>
+      <linearGradient id="bunBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#c98a3b"/>
+        <stop offset="100%" stop-color="#7a4a18"/>
+      </linearGradient>
+    </defs>
+    <!-- Pão de cima -->
+    <ellipse cx="200" cy="130" rx="150" ry="80" fill="url(#bunTop)"/>
+    <circle cx="160" cy="100" r="3" fill="#fff5dc"/>
+    <circle cx="200" cy="85" r="3" fill="#fff5dc"/>
+    <circle cx="240" cy="95" r="3" fill="#fff5dc"/>
+    <circle cx="180" cy="115" r="3" fill="#fff5dc"/>
+    <circle cx="220" cy="120" r="3" fill="#fff5dc"/>
+    <!-- Alface -->
+    <path d="M 60 170 Q 100 155 140 170 Q 180 155 220 170 Q 260 155 300 170 Q 340 155 340 175 L 60 175 Z" fill="#3a8a3a"/>
+    <path d="M 60 175 Q 100 165 140 178 Q 180 165 220 178 Q 260 165 300 178 Q 340 165 340 188 L 60 188 Z" fill="#4caf4c"/>
+    <!-- Queijo -->
+    <rect x="55" y="185" width="290" height="22" fill="url(#cheese)" rx="3"/>
+    <path d="M 55 207 L 75 222 L 95 207 L 115 222 L 135 207 L 155 222 L 175 207 L 195 222 L 215 207 L 235 222 L 255 207 L 275 222 L 295 207 L 315 222 L 335 207 L 345 207 L 345 195 L 55 195 Z" fill="url(#cheese)"/>
+    <!-- Carne -->
+    <rect x="50" y="218" width="300" height="38" fill="url(#meat)" rx="6"/>
+    <circle cx="90" cy="232" r="4" fill="#2a1008"/>
+    <circle cx="160" cy="242" r="3" fill="#2a1008"/>
+    <circle cx="230" cy="230" r="4" fill="#2a1008"/>
+    <circle cx="290" cy="245" r="3" fill="#2a1008"/>
+    <!-- Pão de baixo -->
+    <ellipse cx="200" cy="280" rx="150" ry="35" fill="url(#bunBottom)"/>
+    <!-- Vapor -->
+    <g opacity="0.4">
+      <path d="M 150 60 Q 145 40 155 30 Q 165 15 155 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M 200 50 Q 195 30 205 20 Q 215 5 205 -10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M 250 55 Q 245 35 255 25 Q 265 10 255 -5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+</section>
+
+<!-- ============ CARDÁPIO ============ -->
+<section class="menu" id="cardapio">
+  <div class="container">
+    <span class="section-eyebrow">Nosso Cardápio</span>
+    <h2 class="section-title">Tem de <em>tudo</em> aqui</h2>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <span class="menu-icon">🍔</span>
+        <h3>Sanduíches</h3>
+        <p>Recheados, suculentos e do tamanho da sua fome</p>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🥟</span>
+        <h3>Salgados</h3>
+        <p>Coxinha, pastel, esfiha, kibe — fritos na hora</p>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🎂</span>
+        <h3>Bolos</h3>
+        <p>Caseiros, fofinhos, do jeito que a vovó fazia</p>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🍮</span>
+        <h3>Pudim</h3>
+        <p>Cremoso, com calda dourada e zero furinho</p>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🍖</span>
+        <h3>Churrasco</h3>
+        <p>Simples ou completo, no carvão e bem temperado</p>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🥤</span>
+        <h3>Sucos & Refri</h3>
+        <p>Geladinhos pra acompanhar e refrescar</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFÍCIOS ============ -->
+<section class="benefits">
+  <div class="container">
+    <span class="section-eyebrow">Por que pedir aqui</span>
+    <h2 class="section-title">5 motivos pra <em>chamar a família</em></h2>
+    <ul class="benefits-list">
+      <li class="benefit-item">
+        <span class="benefit-num">01</span>
+        <div class="benefit-text">
+          <h3>Comida feita na hora</h3>
+          <p>Nada de congelado ou requentado. Tudo sai fresquinho do fogão direto pra sua mesa.</p>
+        </div>
+      </li>
+      <li class="benefit-item">
+        <span class="benefit-num">02</span>
+        <div class="benefit-text">
+          <h3>Preço que cabe no bolso</h3>
+          <p>Sabor caseiro com valor justo. Combo pra toda a família sem pesar no orçamento.</p>
+        </div>
+      </li>
+      <li class="benefit-item">
+        <span class="benefit-num">03</span>
+        <div class="benefit-text">
+          <h3>Entrega rápida e quentinha</h3>
+          <p>Em até 40 minutos na sua porta. Embalagem térmica pra chegar do mesmo jeitinho.</p>
+        </div>
+      </li>
+      <li class="benefit-item">
+        <span class="benefit-num">04</span>
+        <div class="benefit-text">
+          <h3>Cardápio pra todo gosto</h3>
+          <p>Do salgado pro almoço ao doce pra sobremesa. Tem opção pra criançada e pros adultos.</p>
+        </div>
+      </li>
+      <li class="benefit-item">
+        <span class="benefit-num">05</span>
+        <div class="benefit-text">
+          <h3>Atendimento de família</h3>
+          <p>A gente trata cada cliente como gente da casa. Pediu uma vez, virou da turma.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============ -->
+<section class="testimonials">
+  <div class="container">
+    <span class="section-eyebrow">Quem já provou</span>
+    <h2 class="section-title">A galera <em>aprovou</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Pedi o churrasco completo pro aniversário do meu marido e foi um sucesso! Carne no ponto, farofa caprichada e o pudim... gente, esse pudim é coisa de outro mundo. Já virei cliente fiel."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CR</div>
+          <div class="author-info">
+            <strong>Carla Rodrigues</strong>
+            <span>Adrianópolis · pediu 6x</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Sanduíche é o melhor da região, sem exagero. Pão fresquinho, recheio fartão e ainda chegou em 25 minutos. Os salgados pro lanche da tarde também são imbatíveis. Recomendo demais!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JM</div>
+          <div class="author-info">
+            <strong>Júnior Marinho</strong>
+            <span>Cidade Nova · pediu 12x</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Faço pedido todo final de semana pra família e nunca decepciona. O bolo de cenoura com chocolate é simplesmente o melhor que já comi. Atendimento no WhatsApp é super atencioso, parece coisa de vizinho."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PS</div>
+          <div class="author-info">
+            <strong>Patrícia Sales</strong>
+            <span>Flores · pediu 9x</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final" id="pedir">
+  <div class="container">
+    <span class="urgency-banner">⏰ Só hoje · Frete grátis acima de R$ 50</span>
+    <h2>Tá com fome? <em>Chama no zap!</em></h2>
+    <p>Não perca tempo no fogão. A gente cuida da janta enquanto você curte a família. Peça agora e receba quentinho na porta.</p>
+    <a href="https://wa.me/5592991323663?text=Ol%C3%A1!%20Vi%20a%20promo%C3%A7%C3%A3o%20e%20quero%20fazer%20um%20pedido" class="btn-whatsapp btn-large" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pedir Agora no WhatsApp
+    </a>
+    <div class="urgency-note">🔥 Últimas vagas pra entrega de hoje · Garante já a sua!</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="brand">Lanche <span>Da Família</span></div>
+    <p class="tagline">Comida boa, no preço justo, com aquele sabor de casa.</p>
+    <a href="https://instagram.com/lanchedafamilia" class="social" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @lanchedafamilia
+    </a>
+    <div class="copyright">© 2026 Lanche Da Família · Todos os direitos reservados</div>
+  </div>
+</footer>
+
+<!-- Botão flutuante -->
+<a href="https://wa.me/5592991323663?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido" class="float-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>
